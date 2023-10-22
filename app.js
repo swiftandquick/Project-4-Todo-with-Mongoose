@@ -51,15 +51,13 @@ app.get('/:id/edit', async(req, res) => {
 app.post('/', async(req, res) => {
     const content = req.body.content;
     const todo = new Todo(req.body);
-    console.log(todo);
     await todo.save();
     res.redirect('/');
 });
 
 app.patch('/:id', async(req, res) => {
     const { id } = req.params;
-    const todo = await Todo.findByIdAndUpdate(id, { ...req.body });
-    await todo.save();
+    await Todo.findByIdAndUpdate(id, { ...req.body });
     res.redirect('/');
 });
 
