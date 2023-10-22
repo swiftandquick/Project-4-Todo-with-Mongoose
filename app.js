@@ -49,7 +49,6 @@ app.get('/:id/edit', async(req, res) => {
 });
 
 app.post('/', async(req, res) => {
-    const content = req.body.content;
     const todo = new Todo(req.body);
     await todo.save();
     res.redirect('/');
