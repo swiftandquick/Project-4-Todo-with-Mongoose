@@ -1,26 +1,20 @@
 <%- include('header'); -%>
-  <body>
-    <form action="/" method="POST">
-        <input type="text" id="content" name="content" value="" required/>
-        <button>Submit</button>
-    </form>
-    <% if (locals.todos) { %>
-        <ul class="todos">
-            
-                <% for (let todo of todos) { %>
-                    <li>
-                        <%= todo.content %>, due by <%= todo.date %>
-                        
-                        <a href="/<%=todo._id%>/edit">Edit</a>
-                        <form action="/<%=todo._id%>?_method=DELETE" method="POST">
-                            <button>Delete</button>
-                        </form>
-                    </li>
-                <% } %>
-        
-        </ul>
+<body>
+  <form action="/" method="POST">
+    <input type="text" id="content" name="content" value="" required />
+    <button>Submit</button>
+  </form>
+  <ul class="todos">
+    <% for (let todo of todos) { %>
+    <li>
+      <%= todo.content %>, due by <%= todo.date %>
+
+      <a href="/<%=todo._id%>/edit">Edit</a>
+      <form action="/<%=todo._id%>?_method=DELETE" method="POST">
+        <button>Delete</button>
+      </form>
+    </li>
     <% } %>
-  </body>
-  <%- include('footer'); -%>
-
-
+  </ul>
+</body>
+<%- include('footer'); -%>
